@@ -60,8 +60,10 @@ jobs:
           EOF
           cat > module/service.sh <<'EOF'
           #!/system/bin/sh
+          MODDIR=${0%/*}
+          chmod 755 "$MODDIR/mouse"
           until [ "$(getprop sys.boot_completed)" = "1" ]; do sleep 2; done
-          "${0%/*}/mouse" &
+          "$MODDIR/mouse" &
           EOF
           cat > module/customize.sh <<'EOF'
           set_permissions() {
