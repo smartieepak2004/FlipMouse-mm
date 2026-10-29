@@ -25,7 +25,7 @@ jobs:
           ar = '$TC/llvm-ar'
           strip = '$TC/llvm-strip'
           [host_machine]
-          system = 'android'
+          system = 'linux'
           cpu_family = 'arm'
           cpu = 'armv7'
           endian = 'little'
