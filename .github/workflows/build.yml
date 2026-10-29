@@ -30,6 +30,8 @@ jobs:
           cpu = 'armv7'
           endian = 'little'
           EOF
+          sed -i "s/cc\.find_library('rt'[^)]*)/dependency('', required: false)/" libevdev/meson.build
+          grep -n "find_library" libevdev/meson.build
           meson setup build-evdev libevdev --cross-file cross.txt --default-library=static -Dtests=disabled -Ddocumentation=disabled
           ninja -C build-evdev
 
